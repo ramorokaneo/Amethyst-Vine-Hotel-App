@@ -12,7 +12,6 @@ import EventDetail from "./components/Events/EventDetail";
 import EventReservation from "./components/Events/EventDetail";
 import SpecialOfferList from "./components/SpecialOffers/SpecialOfferList";
 import ContactUs from "./components/Pages/ContactUs";
-import BookPage from "./components/Rooms/BookPage";
 import ProfilePage from "./components/Profile/ProfilePage";
 import SpecialOfferDetails from "./components/SpecialOffers/SpecialOfferDetails";
 import BookingHistory from "./components/Profile/BookingHistory";
@@ -26,6 +25,8 @@ import AdminRegisterForm from "./components/Admin/AdminRegisterForm";
 import Dashboard from "./components/Admin/Dashboard";
 import Sidebar from "./components/Admin/Sidebar";
 import MainContent from "./components/Admin/MainContent";
+import GuestInfoPage from "./components/Pages/GuestInfoPage"; 
+
 
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/rooms" element={<RoomList />} />
         <Route path="/rooms/:id" element={<RoomDetail />} />
-        <Route path="/reservation/:id" element={<Reservation />} />
+        <Route path="/rooms/:id/reservation" element={<Reservation />} />
+        <Route path="/guest-info/:roomId" element={<GuestInfoPage />} />
         <Route path="/registration" element={<RegistrationForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/events" element={<EventList />} />
@@ -44,7 +46,6 @@ function App() {
         <Route path="/eventreservation/:id" element={<EventReservation />} />
         <Route path="/special-offers" element={<SpecialOfferList />} />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/book" element={<BookPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/special-offers/:id" element={<SpecialOfferDetails />} />
         <Route path="/booking" element={<BookingHistory />} />

@@ -29,9 +29,9 @@ function Reservation({ room }) {
         />
       </label>
 
-      <Link to="/login" className="button">
-        Book Now
-      </Link>
+      <Link to={`/guest-info/${room.id}`} className="button">
+  Book Now
+</Link>
     </div>
   );
 }

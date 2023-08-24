@@ -15,7 +15,7 @@ const roomData = [
     id: 1,
     name: "Deluxe Room",
     description: "A spacious room with a view of the city.",
-    price: 150,
+    price: 1224,
     image: require("../../assests/Images/Bedroom1.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV'],
   },
@@ -23,7 +23,7 @@ const roomData = [
     id: 2,
     name: "Twin Room",
     description: "A spacious room with a view of the city.",
-    price: 150,
+    price: 1143,
     image: require("../../assests/Images/Bedroom 2.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Private Bathroom', 'TV'],
   },
@@ -31,7 +31,7 @@ const roomData = [
     id: 3,
     name: "Haddasah Suite",
     description: "A spacious room with a view of the city.",
-    price: 150,
+    price: 1251,
     image: require("../../assests/Images/Bedroom 3.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV'],
   },
@@ -39,7 +39,7 @@ const roomData = [
     id: 4,
     name: "Blair Suite",
     description: "A spacious room with a view of the city.",
-    price: 150,
+    price: 1390,
     image: require("../../assests/Images/bedroom 4.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV'],
   },
@@ -47,7 +47,7 @@ const roomData = [
     id: 5,
     name: "Zapphora Suite",
     description: "A spacious room with a view of the city.",
-    price: 150,
+    price: 3420,
     image: require("../../assests/Images/bedroom 5.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV', 'Private Garden'],
   },
@@ -55,7 +55,7 @@ const roomData = [
     id: 6,
     name: "Manroe Suite",
     description: "A spacious room with a view of the city.",
-    price: 150,
+    price: 3800,
     image: require("../../assests/Images/Bedroom 6.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'Private Pool', 'TV'],
   },
@@ -83,6 +83,8 @@ function getAmenityIcon(amenity) {
 }
 
 function RoomList() {
+  const currencySymbol = "ZAR";
+
   return (
     <div>
       <Header />
@@ -100,7 +102,8 @@ function RoomList() {
                 </div>
               ))}
             </div>
-            <p>Price: ${room.price} per night</p>
+         
+            <p>Price: {room.price} {currencySymbol} per night</p>
             <Link to={`/rooms/${room.id}`}>
               <button>View Details</button>
             </Link>
@@ -110,6 +113,6 @@ function RoomList() {
       <Footer />
     </div>
   );
-              }
+}
 
 export default RoomList;

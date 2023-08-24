@@ -23,7 +23,7 @@ const roomData = [
     id: 1,
     name: 'Deluxe Room',
     description: 'A spacious room with a view of the city.',
-    price: 150,
+    price: 1224,
     image: Bedroom1Image,
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV'],
   },
@@ -31,7 +31,7 @@ const roomData = [
     id: 2,
     name: 'Twin Room',
     description: 'A twin bed room, complete with modern amenities for a relaxing stay for 2.',
-    price: 200,
+    price: 1143,
     image: Bedroom2Image,
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Private Bathroom', 'TV'],
   },
@@ -39,7 +39,7 @@ const roomData = [
     id: 3,
     name: 'Haddasah Suite',
     description: 'A comfortable suite for a family, featuring separate bedrooms and a shared living space.',
-    price: 300,
+    price: 1251,
     image: Bedroom3Image,
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV'],
   },
@@ -47,7 +47,7 @@ const roomData = [
     id: 4,
     name: 'Haddasah Suite',
     description: 'A comfortable suite for a family, featuring separate bedrooms and a shared living space.',
-    price: 300,
+    price: 1390,
     image: Bedroom4Image,
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV'],
   },
@@ -55,14 +55,14 @@ const roomData = [
     id: 5,
     name: 'Haddasah Suite',
     description: 'A comfortable suite for a family, featuring separate bedrooms and a shared living space.',
-    price: 300,
+    price: 3420,
     image: Bedroom5Image,
   },
   {
     id: 6,
     name: 'Haddasah Suite',
     description: 'A comfortable suite for a family, featuring separate bedrooms and a shared living space.',
-    price: 300,
+    price: 3800,
     image: Bedroom6Image,
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'Private Pool', 'TV'],
 
@@ -97,6 +97,8 @@ function RoomDetail() {
   if (!room) {
     return <div>Room not found.</div>;
   }
+  
+  const currencySymbol = "ZAR";
 
   return (
     <div>
@@ -112,7 +114,7 @@ function RoomDetail() {
                 </li>
               ))}
             </ul>
-      <p>Price: ${room.price} per night</p>
+            <p>Price: {room.price} {currencySymbol} per night</p>
       <Reservation room={room} />
     </div>
     <Footer />

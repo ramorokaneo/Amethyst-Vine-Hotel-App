@@ -103,19 +103,18 @@ app.post('/api/login', async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    // Find the user based on the provided email
     const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Check if the provided password matches the user's password
+  
     if (user.password !== password) {
       return res.status(401).json({ message: 'Incorrect password' });
     }
 
-    res.status(200).json({ message: 'Login successful', token: 'fake-token' }); // Provide a valid token here
+    res.status(200).json({ message: 'Login successful', token: 'fake-token' });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ error: 'Login error' });

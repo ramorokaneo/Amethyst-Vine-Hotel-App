@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../styles.css'; 
-
-
+import '../styles.css';
 
 function ClientForm({ handleClientLogin }) {
   const [clientUsername, setClientUsername] = useState('');
@@ -11,7 +9,7 @@ function ClientForm({ handleClientLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://10.255.64.46:5000/api/login', {
+      const response = await fetch('http://10.255.64.46:5000/api/login', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,21 +20,16 @@ function ClientForm({ handleClientLogin }) {
         }),
       });
 
-      const responseData = await response.json();
-
       if (response.ok) {
-        alert('Client login successful'); // Display alert
-        // Handle further actions after successful login
+        alert('Client login successful');
+        handleClientLogin(); 
       } else {
-        alert('Invalid credentials.'); // Display alert
+        alert('Invalid credentials.');
       }
-    } catch (error)
+    } catch (error) {
       console.error('Login error:', error);
     }
- 
   };
- 
-  
 
   return (
     <div className="client-form">
@@ -60,8 +53,8 @@ function ClientForm({ handleClientLogin }) {
         </div>
         <button type="submit">Login as Client</button>
         <p>
-      Don't have an account? <Link to="/registration">Register</Link>
-      </p>
+          Don't have an account? <Link to="/registration">Register</Link>
+        </p>
       </form>
     </div>
   );
@@ -71,17 +64,29 @@ function AdminForm({ handleAdminLogin }) {
   const [adminEmployeeNumber, setAdminEmployeeNumber] = useState('');
   const [adminPassword, setAdminPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    console.log('Admin Employee Number:', adminEmployeeNumber);
-    console.log('Admin Password:', adminPassword);
-  
-    if (adminEmployeeNumber === adminEmployeeNumber.match(/^AVH\d{6}$/) && adminPassword === 'adminPassword') {
-      handleAdminLogin();
-      alert('Admin login successful');
-    } else {
-      alert('Invalid credentials.');
+
+    try {
+      const response = await fetch('http://10.255.64.46:5000/api/login-as-admin', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          employeeNumber: adminEmployeeNumber,
+          password: adminPassword,
+        }),
+      });
+
+      if (response.ok) {
+        handleAdminLogin();
+        alert('Admin login successful');
+      } else {
+        alert('Invalid credentials.');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
     }
   };
 
@@ -107,8 +112,9 @@ function AdminForm({ handleAdminLogin }) {
         </div>
         <button type="submit">Login as Admin</button>
         <p>
-        Not registered? Now register <Link to="/admin-register">Register</Link>
-      </p>
+          Not registered? Now register{' '}
+          <Link to="/admin-register">Register</Link>
+        </p>
       </form>
     </div>
   );
@@ -121,14 +127,12 @@ function LoginForm() {
   const handleClientLogin = () => {
     setLoggedIn(true);
     alert('Client login successful');
-    
-    navigate('/home')
+    navigate('/home');
   };
 
   const handleAdminLogin = () => {
     setLoggedIn(true);
     alert('Admin login successful');
-
     navigate('/dashboard');
   };
 
@@ -141,13 +145,11 @@ function LoginForm() {
     <div className="login-form">
       <h2>Login</h2>
       {loggedIn ? (
-        // Displayed when logged in
         <div>
           <p>You are logged in.</p>
           <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
-        // Displayed when not logged in
         <div>
           <ClientForm handleClientLogin={handleClientLogin} />
           <AdminForm handleAdminLogin={handleAdminLogin} />
