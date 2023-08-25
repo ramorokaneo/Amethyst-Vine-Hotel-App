@@ -32,7 +32,8 @@ function RegistrationForm() {
           name,
           dateOfBirth,
           gender,
-          phoneNumber: parseInt(cleanedPhoneNumber, 10), 
+          phoneNumber: parseInt(cleanedPhoneNumber, 10), // Ensure to specify base 10
+          username,
           email,
           password,
         }),

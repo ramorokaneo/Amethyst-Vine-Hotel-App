@@ -102,22 +102,22 @@ function RoomDetail() {
 
   return (
     <div>
-    <Header />
-    <div className="room-detail">
-      <img src={room.image} alt={room.name} />
-      <h2>{room.name}</h2>
-      <p>{room.description}</p>
-      <ul>
-              {room.amenities.map((amenity, index) => (
-                <li key={index}>
-                  {getAmenityIcon(amenity)} {amenity}
-                </li>
-              ))}
-            </ul>
-            <p>Price: {room.price} {currencySymbol} per night</p>
-      <Reservation room={room} />
-    </div>
-    <Footer />
+      <Header />
+      <div className="room-detail">
+        <img src={room.image} alt={room.name} />
+        <h2>{room.name}</h2>
+        <p>{room.description}</p>
+        <ul>
+          {room.amenities.map((amenity, index) => (
+            <li key={index}>
+              {getAmenityIcon(amenity)} {amenity}
+            </li>
+          ))}
+        </ul>
+        <p>Price: {room.price} {currencySymbol} per night</p>
+        <Reservation room={room} />
+      </div>
+      <Footer />
     </div>
   );
 }

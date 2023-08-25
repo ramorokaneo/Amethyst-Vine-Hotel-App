@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const User = require('./models/User'); 
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const User = require('./models/User');
 const Admin = require('./models/Admin');
 const cors = require('cors');
 
@@ -19,7 +21,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/amethystvinehotel", {
   console.error('Error connecting to MongoDB:', error);
 });
 
-// API endpoint for user registration
+
 app.post('/api/register', async (req, res) => {
   try {
     const {
@@ -103,23 +105,25 @@ app.post('/api/login', async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ username });
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-  
-    if (user.password !== password) {
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
       return res.status(401).json({ message: 'Incorrect password' });
     }
 
-    res.status(200).json({ message: 'Login successful', token: 'fake-token' });
+    res.status(200).json({ message: 'Login successful' });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ error: 'Login error' });
   }
 });
+
 
 app.post('/api/login-as-admin', async (req, res) => {
   try {

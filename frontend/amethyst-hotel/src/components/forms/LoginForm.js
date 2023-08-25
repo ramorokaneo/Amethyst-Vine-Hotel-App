@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../styles.css';
 
 function ClientForm({ handleClientLogin }) {
   const [clientUsername, setClientUsername] = useState('');
@@ -9,7 +8,7 @@ function ClientForm({ handleClientLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://10.255.64.46:5000/api/login', { 
+      const response = await fetch('http://10.255.64.46:5000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,7 +21,7 @@ function ClientForm({ handleClientLogin }) {
 
       if (response.ok) {
         alert('Client login successful');
-        handleClientLogin(); 
+        handleClientLogin();
       } else {
         alert('Invalid credentials.');
       }

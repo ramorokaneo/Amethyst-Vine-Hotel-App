@@ -28,10 +28,9 @@ function Reservation({ room }) {
           onChange={e => setGuests(e.target.value)}
         />
       </label>
-
-      <Link to={`/guest-info/${room.id}`} className="button">
-  Book Now
-</Link>
+      <Link to={`/rooms/${room.id}/guest-info`} className="button">
+        Book Now
+      </Link>
     </div>
   );
 }

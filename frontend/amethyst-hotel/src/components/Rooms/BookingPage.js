@@ -1,21 +1,45 @@
-import React from 'react';
-import GuestInfoPage from './GuestInfoPage'; // Adjust the import path based on your project structure
+import React, { useState } from 'react';
+import Reservation from './Reservation'; // Adjust the import path
+import GuestInfoPage from './GuestInfoPage'; // Adjust the import path
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function BookingPage() {
-  // Define your room object
-  const yourRoomObject = {
-    id: 1,
-    name: 'Sample Room',
-    price: 100, // or any other value
-    // ... other properties
-  };
+  // Shared state
+  const [checkIn, setCheckIn] = useState(new Date());
+  const [checkOut, setCheckOut] = useState(new Date());
+  const [guests, setGuests] = useState(1);
 
+  // Pass state and functions as props to Reservation and GuestInfoPage
   return (
-    <div>
-      <h1>Booking Page</h1>
-      <GuestInfoPage room={yourRoomObject} />
-      {/* Other content of the BookingPage */}
-    </div>
+    <Router>
+      <Switch>
+        <Route
+          path="/"
+          exact
+          render={() => (
+            <Reservation
+              checkIn={checkIn}
+              setCheckIn={setCheckIn}
+              checkOut={checkOut}
+              setCheckOut={setCheckOut}
+              guests={guests}
+              setGuests={setGuests}
+            />
+          )}
+        />
+        <Route
+          path="/guest-info/:roomId"
+          render={(props) => (
+            <GuestInfoPage
+              {...props}
+              checkIn={checkIn}
+              checkOut={checkOut}
+              guests={guests}
+            />
+          )}
+        />
+      </Switch>
+    </Router>
   );
 }
 
