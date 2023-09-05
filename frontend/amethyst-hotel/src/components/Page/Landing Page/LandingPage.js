@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles.css';
+import '../Landing Page/Landing-Page.css';
 
-import image1 from '../../assests/Images/safari.jpg';
-import image2 from  '../../assests/Images/island (2).jpg';
-import image3 from '../../assests/Images/facial.jpg';
-import image4 from '../../assests/Images/meal.jpg';
-import image5 from '../../assests/Images/out door.jpg';
+import image1 from '../../../assests/Images/safari.jpg';
+import image2 from  '../../../assests/Images/island (2).jpg';
+import image3 from '../../../assests/Images/facial.jpg';
+import image4 from '../../../assests/Images/meal.jpg';
+import image5 from '../../../assests/Images/out door.jpg';
 
 
 function LandingPage() {

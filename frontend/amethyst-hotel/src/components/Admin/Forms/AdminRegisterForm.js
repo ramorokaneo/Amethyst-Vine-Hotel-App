@@ -107,7 +107,7 @@ function AdminRegisterForm() {
         <button className="form-button" type="submit">Register</button>
       </form>
       <p className="form-link">
-        Already have an account? <Link to="/admin-login">Login here</Link>
+        Already have an account? <Link to="/login">Login here</Link>
       </p>
     </div>
   );

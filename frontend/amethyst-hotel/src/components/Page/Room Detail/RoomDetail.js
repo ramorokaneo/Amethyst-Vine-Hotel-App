@@ -1,8 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Reservation from '../Rooms/Reservation';
-import Header from '../../components/Extras/Header';
-import Footer from '../../components/Extras/Footer';
+import Reservation from '../Reservation/Reservation';
 import WifiIcon from "@mui/icons-material/Wifi";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
@@ -10,13 +8,14 @@ import BathtubIcon from "@mui/icons-material/Bathtub";
 import TvIcon from "@mui/icons-material/Tv";
 import NaturePeopleIcon from "@mui/icons-material/NaturePeople";
 import PoolIcon from "@mui/icons-material/Pool";
+import "./RoomDetail.css";
 
-import Bedroom1Image from '../../assests/Images/Bedroom1.jpg';
-import Bedroom2Image from '../../assests/Images/Bedroom 2.jpg';
-import Bedroom3Image from '../../assests/Images/Bedroom 3.jpg';
-import Bedroom4Image from '../../assests/Images/bedroom 4.jpg';
-import Bedroom5Image from '../../assests/Images/bedroom 5.jpg';
-import Bedroom6Image from '../../assests/Images/Bedroom 6.jpg';
+import Bedroom1Image from '../../../assests/Images/Bedroom1.jpg';
+import Bedroom2Image from '../../../assests/Images/Bedroom 2.jpg';
+import Bedroom3Image from '../../../assests/Images/Bedroom 3.jpg';
+import Bedroom4Image from '../../../assests/Images/bedroom 4.jpg';
+import Bedroom5Image from '../../../assests/Images/bedroom 5.jpg';
+import Bedroom6Image from '../../../assests/Images/Bedroom 6.jpg';
 
 const roomData = [
   {
@@ -102,7 +101,6 @@ function RoomDetail() {
 
   return (
     <div>
-      <Header />
       <div className="room-detail">
         <img src={room.image} alt={room.name} />
         <h2>{room.name}</h2>
@@ -117,7 +115,6 @@ function RoomDetail() {
         <p>Price: {room.price} {currencySymbol} per night</p>
         <Reservation room={room} />
       </div>
-      <Footer />
     </div>
   );
 }

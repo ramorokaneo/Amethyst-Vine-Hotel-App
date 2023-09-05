@@ -1,0 +1,51 @@
+.landing-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.landing-page h1 {
+  margin-top: 30px;
+  font-size: 36px;
+  color: #333;
+}
+
+.landing-page p {
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: #666;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.landing-image {
+  width: 20%;
+  height: auto;
+  border: 2px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.landing-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.landing-page-button {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.landing-page-button:hover {
+  background-color: #c0392b;
+}

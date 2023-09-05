@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "../Extras/Header";
-import Footer from "../Extras/Footer";
 import WifiIcon from "@mui/icons-material/Wifi";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
@@ -9,6 +7,7 @@ import BathtubIcon from "@mui/icons-material/Bathtub";
 import TvIcon from "@mui/icons-material/Tv";
 import NaturePeopleIcon from "@mui/icons-material/NaturePeople";
 import PoolIcon from "@mui/icons-material/Pool";
+import "./RoomList.css";
 
 const roomData = [
   {
@@ -16,7 +15,7 @@ const roomData = [
     name: "Deluxe Room",
     description: "A spacious room with a view of the city.",
     price: 1224,
-    image: require("../../assests/Images/Bedroom1.jpg"),
+    image: require("../../../assests/Images/Bedroom1.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV'],
   },
   {
@@ -24,7 +23,7 @@ const roomData = [
     name: "Twin Room",
     description: "A spacious room with a view of the city.",
     price: 1143,
-    image: require("../../assests/Images/Bedroom 2.jpg"),
+    image: require("../../../assests/Images/Bedroom 2.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Private Bathroom', 'TV'],
   },
   {
@@ -32,7 +31,7 @@ const roomData = [
     name: "Haddasah Suite",
     description: "A spacious room with a view of the city.",
     price: 1251,
-    image: require("../../assests/Images/Bedroom 3.jpg"),
+    image: require("../../../assests/Images/Bedroom 3.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV'],
   },
   {
@@ -40,7 +39,7 @@ const roomData = [
     name: "Blair Suite",
     description: "A spacious room with a view of the city.",
     price: 1390,
-    image: require("../../assests/Images/bedroom 4.jpg"),
+    image: require("../../../assests/Images/bedroom 4.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV'],
   },
   {
@@ -48,7 +47,7 @@ const roomData = [
     name: "Zapphora Suite",
     description: "A spacious room with a view of the city.",
     price: 3420,
-    image: require("../../assests/Images/bedroom 5.jpg"),
+    image: require("../../../assests/Images/bedroom 5.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'TV', 'Private Garden'],
   },
   {
@@ -56,7 +55,7 @@ const roomData = [
     name: "Manroe Suite",
     description: "A spacious room with a view of the city.",
     price: 3800,
-    image: require("../../assests/Images/Bedroom 6.jpg"),
+    image: require("../../../assests/Images/Bedroom 6.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Mini-bar', 'Private Bathroom', 'Private Pool', 'TV'],
   },
 ];
@@ -87,7 +86,6 @@ function RoomList() {
 
   return (
     <div>
-      <Header />
       <h2>Choose a Room</h2>
       <div className="room-list">
         {roomData.map((room) => (
@@ -110,7 +108,6 @@ function RoomList() {
           </div>
         ))}
       </div>
-      <Footer />
     </div>
   );
 }

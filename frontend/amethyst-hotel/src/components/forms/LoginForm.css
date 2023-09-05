@@ -1,0 +1,116 @@
+/* Styling for the login form container */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Styling for the individual forms */
+  .client-form,
+  .admin-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 10px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out; /* Add a smooth sliding transition */
+    transform: translateX(0);
+  }
+  
+  /* Styling for visible forms */
+  .client-form.visible,
+  .admin-form.visible {
+    transform: translateX(0);
+  }
+  
+  /* Styling for hidden forms */
+  .client-form:not(.visible),
+  .admin-form:not(.visible) {
+    transform: translateX(-110%); /* Move the form to the left, hiding it */
+  }
+  
+  /* Style for labels and inputs within forms */
+  .client-form label,
+  .admin-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .client-form input,
+  .admin-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style for login buttons */
+  .client-form button,
+  .admin-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Style for the "Not registered?" link */
+  p a {
+    text-decoration: none;
+    color: #007bff;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  
+  /* Style for logged-in state */
+  p.logged-in {
+    font-weight: bold;
+    color: green;
+    margin: 10px 0;
+  }
+  
+  /* Style for logout button */
+  button.logout-button {
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .admin-card {
+    transition: transform 0.3s ease-in-out; /* Add a smooth sliding transition */
+    transform: translateX(0);
+  }
+  
+  .admin-card:not(.admin-card-visible) {
+    transform: translateX(-110%); /* Move the admin card to the left, hiding it */
+  }
+
+  .card-container {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  
+  .client-image {
+    max-width: 220px; /* Set a maximum width for the image */
+    height: 220px; /* Maintain the image's aspect ratio */
+    margin-right: 30px; /* Add some margin for spacing */
+  }
+  
