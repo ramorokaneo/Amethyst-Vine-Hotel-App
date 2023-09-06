@@ -1,4 +1,4 @@
-import styles from "./Main.css";
+import styles from "./Main.module.css";
 
 const Main = () => {
 	const handleLogout = () => {
