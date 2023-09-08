@@ -1,0 +1,39 @@
+
+.room-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribute cards evenly in a row */
+  }
+  
+  .card {
+    flex: 0 0 calc(33.333% - 20px); /* Adjust card width and add spacing */
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+  }
+  
+  .card img {
+    max-width: 100%;
+  }
+  
+  .card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Stack content vertically within the card */
+    align-items: center; /* Center content horizontally */
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: auto; /* Push other elements to the top */
+  }
+  
+  .card-text {
+    margin-bottom: 10px;
+  }
+  
+  .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  

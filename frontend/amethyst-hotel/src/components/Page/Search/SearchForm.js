@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from "./SearchForm.module.css";
 
 function SearchForm({ onSearch }) {
   const [searchText, setSearchText] = useState('');
@@ -21,10 +22,12 @@ function SearchForm({ onSearch }) {
           value={searchText}
           onChange={handleInputChange}
         />
-        <button type="submit">Search</button>
+        <button className={styles.white_btn} type="submit">Search</button> {/* Use styles.white_btn */}
       </form>
     </div>
   );
 }
 
 export default SearchForm;
+
+

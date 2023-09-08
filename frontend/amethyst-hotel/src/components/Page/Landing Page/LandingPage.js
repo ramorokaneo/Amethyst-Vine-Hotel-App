@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import '../Landing Page/Landing-Page.css';
 
 import image1 from '../../../assests/Images/safari.jpg';
-import image2 from  '../../../assests/Images/island (2).jpg';
+import image2 from  '../../../assests/Images/island.jpg';
 import image3 from '../../../assests/Images/facial.jpg';
 import image4 from '../../../assests/Images/meal.jpg';
-import image5 from '../../../assests/Images/out door.jpg';
+import image5 from '../../../assests/Images/watersport.jpg';
 
 
 function LandingPage() {
@@ -23,7 +23,8 @@ function LandingPage() {
         <img src={image5} alt="Image 5" className="landing-image" />
       </div>
 
-      <Link to="/home" className="landing-page-button">Explore</Link>
+      <Link to="/home
+      " className="landing-page-button">Explore</Link>
     </div>
   );
 }

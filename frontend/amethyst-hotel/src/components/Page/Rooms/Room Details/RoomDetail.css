@@ -8,6 +8,7 @@
     border: 1px solid #ccc;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
   }
   
   .room-card img {
@@ -47,9 +48,23 @@
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    text-decoration: none; /* Remove underlining */
+    display: inline-block; /* Ensure it behaves as a block-level element */
+    border-radius: 4px; /* Add some border radius for a button-like appearance */
   }
   
   .room-card button:hover {
     background-color: #0056b3;
   }
+  
+  
+  .room-card button:hover {
+    background-color: #0056b3;
+  }
+  
+  .max-img-width {
+    max-width: 100%; 
+    height: auto; 
+  }
+
   
