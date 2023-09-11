@@ -4,7 +4,7 @@ import styles from './BookingConfirmation.module.css';
 
 const BookingConfirmation = () => {
   const { title, surname, name, phoneNumber, email } = useParams();
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
   const handleLogout = () => {
     localStorage.removeItem("token");

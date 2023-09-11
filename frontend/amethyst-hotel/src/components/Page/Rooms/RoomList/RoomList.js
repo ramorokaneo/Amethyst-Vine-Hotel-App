@@ -7,7 +7,12 @@ import BathtubIcon from "@mui/icons-material/Bathtub";
 import TvIcon from "@mui/icons-material/Tv";
 import NaturePeopleIcon from "@mui/icons-material/NaturePeople";
 import PoolIcon from "@mui/icons-material/Pool";
-import "./RoomList.css";
+import styles from "./RoomList.module.css";
+import SearchForm from "../../Search/SearchForm";
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faBed, faUtensils, faSpa, faHiking } from '@fortawesome/free-solid-svg-icons';
 
 export const roomData = [
   {
@@ -85,28 +90,68 @@ function RoomList() {
   const currencySymbol = "ZAR";
 
   return (
+    <div className={styles.RoomList_container}>
+      <nav className={styles.navbar}>
+        <h1>Amethyst Vine Hotel</h1>
+        <ul className={styles.navigation_list}>
+          <li>
+            <Link to="/">
+              <FontAwesomeIcon icon={faHome} /> Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/rooms">
+              <FontAwesomeIcon icon={faBed} /> Rooms
+            </Link>
+          </li>
+          <li>
+            <Link to="/dining">
+              <FontAwesomeIcon icon={faUtensils} /> Dining
+            </Link>
+          </li>
+          <li>
+            <Link to="/spa">
+              <FontAwesomeIcon icon={faSpa} /> Spa
+            </Link>
+          </li>
+          <li>
+            <Link to="/activities">
+              <FontAwesomeIcon icon={faHiking} /> Activities
+            </Link>
+          </li>
+        </ul>
+        <SearchForm />
+      </nav>
     <div>
       <h2>Choose a Room</h2>
-      <div className="room-list">
-        {roomData.map((room) => (
-          <div key={room.id} className="room-card">
-            <img src={room.image} alt={room.name} />
-            <h3>{room.name}</h3>
-            <p>{room.description}</p>
-            <div className="amenities-row">
-              {room.amenities.map((amenity, index) => (
-                <div key={index} className="amenity">
-                  {getAmenityIcon(amenity)} <span>{amenity}</span>
+      <div className={styles.roomList}>
+          {roomData.map((room) => (
+            <div key={room.id} className={styles.roomCard}>
+              <div className={styles.roomImageContainer}>
+                <img
+                  src={room.image}
+                  alt={room.name}
+                  className={styles.roomImage}
+                />
+              </div>
+              <div className={styles.cardContent}>
+                <h3>{room.name}</h3>
+                <p>{room.description}</p>
+                <div className={styles.amenitiesRow}>
+                  {room.amenities.map((amenity, index) => (
+                    <div key={index} className={styles.amenity}>
+                      {getAmenityIcon(amenity)} <span>{amenity}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+                <p>Price: {room.price} {currencySymbol} per night</p>
+                <Link to={`/rooms/${room.id}`}>
+                  <button>View Details</button>
+                </Link>
+              </div>
             </div>
-         
-            <p>Price: {room.price} {currencySymbol} per night</p>
-            <Link to={`/rooms/${room.id}`}>
-              <button>View Details</button>
-            </Link>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

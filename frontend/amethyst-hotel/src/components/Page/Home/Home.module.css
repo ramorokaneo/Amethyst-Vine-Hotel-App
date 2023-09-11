@@ -28,14 +28,13 @@
 }
 
 .navigation_list {
-    list-style: none; /* Remove the bullets */
-    padding: 0; /* Remove default padding */
+    list-style: none; 
     display: flex;
     gap: 20px;
   }
   
   .navigation_list li {
-    margin: 0; /* Remove default margin */
+    margin: 0;
     padding: 0; /* Remove default padding */
   }
 

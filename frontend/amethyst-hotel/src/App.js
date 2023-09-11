@@ -4,9 +4,11 @@ import Main from "./components/forms/Main/Main";
 import Signup from "./components/forms/Signup/Signup";
 import Login from "./components/forms/Login/Login";
 import BookingConfirmation from "./components/Page/Confirmation/BookingConfirmation";
-import payment from "./components/Page/Payments/Payment";
 import HomeScreen from "./components/Page/Home/HomeScreen";
 import Payment from "./components/Page/Payments/Payment";
+import RoomList from "./components/Page/Rooms/RoomList/RoomList";
+import RoomDetial from "./components/Page/Rooms/Room Details/RoomDetail";
+import Reservation from "./components/Page/Rooms/RoomResrvation/Reservation";
 
 function App() {
 	const user = localStorage.getItem("token");
@@ -21,7 +23,9 @@ function App() {
 			<Route path="/booking-confirmation/:title/:surname/:name/:phoneNumber/:email" element={<BookingConfirmation />} />
 			<Route path="/payment-gateway" exact element={<Payment />} />
 			<Route path="/home" exact element={<HomeScreen />} />
-			
+			<Route path="/rooms" exact element={<RoomList />} />
+			<Route path="/rooms/:id" element={<RoomDetial />} />
+			<Route path="/reservation/:roomId" element={<Reservation />} />
 		</Routes>
 	);
 }

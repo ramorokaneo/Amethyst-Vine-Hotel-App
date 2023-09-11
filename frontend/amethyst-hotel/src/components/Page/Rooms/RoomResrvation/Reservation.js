@@ -1,75 +1,112 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { Link, useLocation } from 'react-router-dom';
-import './Reservation.css';
-
+import { useParams, Link } from 'react-router-dom';
+import { roomData } from '../RoomDetails/RoomDetail'; 
 function Reservation() {
-  const [checkIn, setCheckIn] = useState(new Date());
-  const [checkOut, setCheckOut] = useState(new Date());
-  const [guests, setGuests] = useState(1);
+  const { id } = useParams();
+  const selectedRoom = roomData.find((room) => room.id === parseInt(id));
 
-  const location = useLocation();
-  const roomData = location.state ? location.state.roomData : null;
+  const [reservationData, setReservationData] = useState({
+    checkInDate: '',
+    checkOutDate: '',
+    guestCount: 1,
+    contactInfo: {
+      name: '',
+      email: '',
+      phone: '',
+    },
+  });
 
-  if (!roomData) {
-    // Handle the case where roomData is not available, e.g., redirect or show an error message.
-    return <p>Room data not found.</p>;
-  }
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setReservationData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmitReservation = (e) => {
+    e.preventDefault();
+    // Handle the reservation submission here, using `room` and `reservationData` if needed
+    console.log("Selected Room Data:");
+    console.log("Reservation Data:", reservationData);
+  };
 
   return (
-    <div className="container mt-4">
-      <div className="card">
-        <div className="card-body">
-          <h2 className="card-title">Make a Reservation</h2>
-          <form>
-            <h3>{roomData.name}</h3>
-            <p>{roomData.description}</p>
-            <p>Price per night: ZAR {roomData.price}</p>
-            <div className="mb-3">
-              <label htmlFor="checkIn" className="form-label">
-                Check-in:
-              </label>
-              <DatePicker
-                id="checkIn"
-                selected={checkIn}
-                onChange={(date) => setCheckIn(date)}
-                className="form-control"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="checkOut" className="form-label">
-                Check-out:
-              </label>
-              <DatePicker
-                id="checkOut"
-                selected={checkOut}
-                onChange={(date) => setCheckOut(date)}
-                className="form-control"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="guests" className="form-label">
-                Guests:
-              </label>
-              <input
-                type="number"
-                id="guests"
-                value={guests}
-                onChange={(e) => setGuests(parseInt(e.target.value))}
-                className="form-control"
-              />
-            </div>
-            <Link to="/login">
-              <button type="button" className="btn btn-primary">
-                Book Now
-              </button>
-            </Link>
-          </form>
+    <div>
+      <h1>Room Reservation</h1>
+      <h2>Selected Room: {selectedRoom ? selectedRoom.name : 'Room not found'}</h2>
+      <form onSubmit={handleSubmitReservation}>
+        <div>
+          <label htmlFor="checkInDate">Check-In Date:</label>
+          <input
+            type="date"
+            id="checkInDate"
+            name="checkInDate"
+            value={reservationData.checkInDate}
+            onChange={handleInputChange}
+            required
+          />
         </div>
-      </div>
+        <div>
+          <label htmlFor="checkOutDate">Check-Out Date:</label>
+          <input
+            type="date"
+            id="checkOutDate"
+            name="checkOutDate"
+            value={reservationData.checkOutDate}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="guestCount">Guest Count:</label>
+          <input
+            type="number"
+            id="guestCount"
+            name="guestCount"
+            value={reservationData.guestCount}
+            onChange={handleInputChange}
+            min="1"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={reservationData.contactInfo.name}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={reservationData.contactInfo.email}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="phone">Phone:</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={reservationData.contactInfo.phone}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <button type="submit">Book Reservation</button>
+      </form>
+      <Link to={`/confirmation`}>Go to Confirmation</Link> {/* Use Link for navigation */}
     </div>
   );
 }
-
 export default Reservation;
