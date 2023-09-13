@@ -12,8 +12,8 @@ router.post("/", async (req, res) => {
      return res.status(400).send({ message: error.details[0].message });
     console.log('admin.js line11 after if')
 
-    const Admin = await Admin.findOne({ employeeNumber: req.body.employeeNumber });
-    console.log('admin.js line14 admin:' , admin)
+    const admin = await Admin.findOne({ employeeNumber: req.body.employeeNumber });
+    console.log('admin.js line14 admin:' ,admin)
     if (admin)
       return res
         .status(409)

@@ -25,3 +25,19 @@
 	cursor: pointer;
 	margin-right: 20px;
 }
+
+.navigation_list {
+    list-style: none; 
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navigation_list li {
+    margin: 0;
+    padding: 0; /* Remove default padding */
+  }
+
+  .navigation_list a {
+    text-decoration: none;
+    color: inherit;
+  }
