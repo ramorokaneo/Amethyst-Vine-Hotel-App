@@ -15,6 +15,8 @@ import AdminMain from "./components/Admin/Forms/AdminMain/AdminMain";
 import Profile from "./components/Page/UserProfile/Profile";
 
 
+
+
 function App() {
 	const user = localStorage.getItem("token");
 
@@ -35,6 +37,7 @@ function App() {
 			<Route path="/adminsignup" element={<AdminSignup />} />
 			<Route path="/adminmain" element={<AdminMain />} />
 			<Route path="/profile" element={<Profile />} />
+			
 		</Routes>
 	);
 }
