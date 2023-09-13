@@ -89,6 +89,8 @@ function getAmenityIcon(amenity) {
 function RoomList() {
   const currencySymbol = "ZAR";
 
+  
+
   return (
     <div className={styles.RoomList_container}>
       <nav className={styles.navbar}>
@@ -145,7 +147,7 @@ function RoomList() {
                   ))}
                 </div>
                 <p>Price: {room.price} {currencySymbol} per night</p>
-                <Link to={`/rooms/${room.id}`}>
+                <Link to={`/room/${room.id}`}>
                   <button>View Details</button>
                 </Link>
               </div>

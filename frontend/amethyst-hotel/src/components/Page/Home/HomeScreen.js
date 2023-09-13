@@ -14,7 +14,7 @@ import image7 from './HomeImages/dinningout.jpg';
 import image8 from './HomeImages/beach4.jpg';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBed, faUtensils, faSpa, faCalendarAlt, faHiking } from '@fortawesome/free-solid-svg-icons';
+import { faBed, faUtensils, faSpa, faCalendarAlt, faHiking, faPhoneAlt, faPerson, faHouse } from '@fortawesome/free-solid-svg-icons';
 
 const images = [image1, image2, image3, image4, image5, image6, image7, image8];
 
@@ -26,11 +26,11 @@ function HomeScreen() {
         <ul className={styles.navigation_list}>
           <li>
             <Link to="/">
-              <FontAwesomeIcon icon={faBed} /> Home
+              <FontAwesomeIcon icon={faHouse} /> Home
             </Link>
           </li>
           <li>
-            <Link to="/rooms">
+            <Link to="/room">
               <FontAwesomeIcon icon={faBed} /> Rooms
             </Link>
           </li>
@@ -47,6 +47,21 @@ function HomeScreen() {
           <li>
             <Link to="/activities">
               <FontAwesomeIcon icon={faHiking} /> Activities
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact">
+              <FontAwesomeIcon icon={faPhoneAlt} /> Contact
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin">
+              <FontAwesomeIcon icon={faCalendarAlt} /> Admin
+            </Link>
+          </li>
+          <li>
+            <Link to="/profile">
+              <FontAwesomeIcon icon={faPerson} /> Profile
             </Link>
           </li>
         </ul>
