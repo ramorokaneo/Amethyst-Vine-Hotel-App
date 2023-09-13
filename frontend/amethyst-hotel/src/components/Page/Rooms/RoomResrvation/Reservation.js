@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { roomData } from '../RoomDetails/RoomDetail'; 
 import SearchForm from '../../Search/SearchForm';
 import styles from "./Reservation.module.css";
@@ -12,6 +12,7 @@ import BathtubIcon from "@mui/icons-material/Bathtub";
 import TvIcon from "@mui/icons-material/Tv";
 import NaturePeopleIcon from "@mui/icons-material/NaturePeople";
 import PoolIcon from "@mui/icons-material/Pool";
+
 
 const getAmenityIcon = (amenity) => {
   switch (amenity) {
@@ -38,15 +39,12 @@ function Reservation() {
   const { id } = useParams();
   const selectedRoom = roomData.find((room) => room.id === parseInt(id));
 
+
   const [reservationData, setReservationData] = useState({
     checkInDate: '',
     checkOutDate: '',
     guestCount: 1,
-    contactInfo: {
-      name: '',
-      email: '',
-      phone: '',
-    },
+    
   });
 
   const [totalAmount, setTotalAmount] = useState(0);
@@ -81,14 +79,21 @@ function Reservation() {
 
 
 
+  const navigate = useNavigate(); // Define navigate using useNavigate
+
   const handleSubmitReservation = (e) => {
     e.preventDefault();
     // Handle the reservation submission here, including the totalAmount
-    console.log("Selected Room Data:", selectedRoom);
-    console.log("Reservation Data:", reservationData);
-    console.log("Total Amount:", totalAmount);
-  };
+    console.log('Selected Room Data:', selectedRoom);
+    console.log('Reservation Data:', reservationData);
+    console.log('Total Amount:', totalAmount);
 
+   // Store the reservation data in local storage
+   localStorage.setItem('reservationData', JSON.stringify(reservationData));
+
+   // Redirect to the 'Login' page
+   navigate('/login');
+ };
   return (
     <div className={styles.Reservation_container}>
       <nav className={styles.navbar}>
@@ -190,7 +195,7 @@ function Reservation() {
                 readOnly
               />
             </div>
-                <button type="submit">Book Reservation</button>
+                <button type="submit">Book</button>
               </form>
             </div>
           </div>
