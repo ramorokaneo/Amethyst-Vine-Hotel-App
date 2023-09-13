@@ -181,39 +181,6 @@ function Reservation() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="name">Name:</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={reservationData.contactInfo.name}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email">Email:</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={reservationData.contactInfo.email}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone">Phone:</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={reservationData.contactInfo.phone}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
               <label>Total Amount:</label>
               <input
                 type="text"
@@ -225,7 +192,6 @@ function Reservation() {
             </div>
                 <button type="submit">Book Reservation</button>
               </form>
-              <Link to={`/confirmation`}>Go to Confirmation</Link>
             </div>
           </div>
         </div>
