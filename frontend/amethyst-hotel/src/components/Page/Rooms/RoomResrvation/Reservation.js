@@ -51,13 +51,15 @@ function Reservation() {
 
   const [totalAmount, setTotalAmount] = useState(0);
 
-   const handleInputChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log(`Input Name: ${name}, Input Value: ${value}`); 
     setReservationData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
+  
 
   const calculateTotalAmount = () => {
     const checkInDate = new Date(reservationData.checkInDate);
