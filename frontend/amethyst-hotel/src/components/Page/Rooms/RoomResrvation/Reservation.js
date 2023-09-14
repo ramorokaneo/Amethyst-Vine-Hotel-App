@@ -91,9 +91,25 @@ function Reservation() {
    // Store the reservation data in local storage
    localStorage.setItem('reservationData', JSON.stringify(reservationData));
 
+   localStorage.setItem('reservationData', JSON.stringify(reservationData));
+
+  
+
    // Redirect to the 'Login' page
    navigate('/login');
- };
+
+    // Redirect to the 'Main' page
+    navigate('/main', {
+      state: {
+        reservationData,
+        selectedRoom,
+        totalAmount,
+      },
+    });
+  };
+
+   
+ 
   return (
     <div className={styles.Reservation_container}>
       <nav className={styles.navbar}>

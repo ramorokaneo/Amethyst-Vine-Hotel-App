@@ -30,7 +30,7 @@ function HomeScreen() {
             </Link>
           </li>
           <li>
-            <Link to="/room">
+            <Link to="/rooms">
               <FontAwesomeIcon icon={faBed} /> Rooms
             </Link>
           </li>

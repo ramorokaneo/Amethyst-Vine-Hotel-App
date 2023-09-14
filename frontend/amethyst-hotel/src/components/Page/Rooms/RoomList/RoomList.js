@@ -147,7 +147,7 @@ function RoomList() {
                   ))}
                 </div>
                 <p>Price: {room.price} {currencySymbol} per night</p>
-                <Link to={`/room/${room.id}`}>
+                <Link to={`/rooms/${room.id}`}>
                   <button>View Details</button>
                 </Link>
               </div>

@@ -41,3 +41,62 @@
     text-decoration: none;
     color: inherit;
   }
+
+  /* Styles for the guest form */
+.guest_form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	max-width: 400px; /* Adjust the max-width as needed */
+	margin: 0 auto; /* Center the form horizontally */
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form_row {
+	margin-bottom: 20px;
+	width: 100%;
+  }
+  
+  .input_field {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	width: 100%;
+	outline: none; /* Remove default input focus outline */
+  }
+  
+  .textarea_field {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	resize: vertical;
+	width: 100%;
+	outline: none; /* Remove default textarea focus outline */
+  }
+  
+  /* Styles for the special request */
+  .special_request {
+	display: none;
+	margin-top: 20px;
+  }
+  
+  .show_special_request .special_request {
+	display: block;
+  }
+  
+  .room_image {
+	max-width: 100%;
+	max-height: 100%; /* Add this line to limit the image height */
+	width: auto; /* Adjust this if needed */
+	height: auto; /* Adjust this if needed */
+	margin-top: 10px;
+	border-radius: 10px; /* Add border-radius for rounded corners */
+  }
+  

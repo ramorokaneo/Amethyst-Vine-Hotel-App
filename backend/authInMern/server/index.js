@@ -7,6 +7,7 @@ const userRoutes = require("./routes/client/users");
 const authRoutes = require("./routes/client/auth");
 const adminRoutes = require("./routes/admin/admins");
 const adminauthRoutes = require("./routes/admin/adminauth");
+const roomsRoutes = require("./routes/rooms");
 
 // database connection
 connection();
@@ -20,7 +21,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/admins", adminRoutes );
 app.use("/api/adminauth", adminauthRoutes);
-app.use("/api/rooms", roomRoutes);
+app.use("/api/rooms", roomsRoutes);
+
 
 
 
