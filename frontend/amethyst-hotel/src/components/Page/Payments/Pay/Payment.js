@@ -73,7 +73,7 @@ function Payment() {
             You consent to receiving electronic communications from Amethyst Vine Hotel.
           </li>
         </ol>
-        <button>Make Payment</button>
+        <button onClick={handlePayment}>Make Payment</button>
       </div>
     </div>
   );
