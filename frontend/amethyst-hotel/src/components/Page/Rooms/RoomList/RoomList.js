@@ -28,7 +28,7 @@ export const roomData = [
     name: "Twin Room",
     description: "A spacious room with a view of the city.",
     price: 1143,
-    image: require("../RoomImages/Bedroom2.jpg"),
+    image: require("../RoomImages/bedroom7.jpg"),
     amenities: ['Free Wi-Fi', 'Air Conditioning', 'Private Bathroom', 'TV'],
   },
   {

@@ -4,33 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBed, faUtensils, faSpa, faCalendarAlt, faHiking, faPhoneAlt, faPerson, faHouse } from '@fortawesome/free-solid-svg-icons';
 import styles from './Payment.module.css';
 
-function Payment({ location }) {
-  const savedInformation = location.state; // Access the saved information from the route state
+function Payment() {
 
-  const handlePayment = () => {
-    fetch("http://localhost:8080/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        items: [
-          { id: 1, quantity: 3 },
-          { id: 2, quantity: 1 },
-        ],
-      }),
-    })
-      .then(res => {
-        if (res.ok) return res.json();
-        return res.json().then(json => Promise.reject(json));
-      })
-      .then(({ url }) => {
-        window.location = url;
-      })
-      .catch(e => {
-        console.error(e.error);
-      });
-  };
 
   return (
     <div className={styles.home_container}>
@@ -98,7 +73,7 @@ function Payment({ location }) {
             You consent to receiving electronic communications from Amethyst Vine Hotel.
           </li>
         </ol>
-        <button onClick={handlePayment}>Make Payment</button>
+        <button>Make Payment</button>
       </div>
     </div>
   );

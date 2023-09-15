@@ -5,9 +5,12 @@ const mongoose = require('mongoose');
 
 
 // Create a new booking
-router.post('/bookings', async (req, res) => {
+router.post('/', async (req, res) => {
+  console.log("bookings.js , line9")
   try {
     const booking = new Booking(req.body);
+    console.log("bookings.js , line12 : req.body", req.body)
+  
     const savedBooking = await booking.save();
     res.status(201).json(savedBooking);
   } catch (error) {

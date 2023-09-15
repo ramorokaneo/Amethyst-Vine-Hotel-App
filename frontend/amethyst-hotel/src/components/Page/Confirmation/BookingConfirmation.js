@@ -27,11 +27,13 @@ const BookingConfirmation = () => {
   
     // Store the information in state
     setSavedInformation(state);
+    console.log("BookingConfirmation.js, line30, setSaveInformation(state):" , state)
   
     try {
       // Send the data to the server using Axios
-      const response = await axios.post('https://localhost:5000/api/bookings', savedInformation);
-      console.log(response.data);
+      const response = await axios.post('http://localhost:5000/api/bookings/', state);
+      localStorage.setItem("state", JSON.stringify(state));
+  
       
       // Redirect to the login page
       navigate('/login');
@@ -40,6 +42,8 @@ const BookingConfirmation = () => {
       // Show an error message or take appropriate action
     }
   };
+
+  
 
   return (
     <div className={styles.main_container}>
