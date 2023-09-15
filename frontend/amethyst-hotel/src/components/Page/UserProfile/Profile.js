@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Profile.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,12 +17,13 @@ import axios from "axios";
 const Profile = () => {
   const [selectedTab, setSelectedTab] = useState("bookings");
   const [user, setUser] = useState(null);
+  const [formData, setFormData] = useState(null);
 
   useEffect(() => {
     // Fetch user data when the component mounts
     async function fetchUserData() {
       try {
-        const response = await axios.get("/api/users"); 
+        const response = await axios.get("/api/users");
         setUser(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -30,15 +31,22 @@ const Profile = () => {
     }
 
     fetchUserData();
+
+    const savedFormData = localStorage.getItem("formData");
+    if (savedFormData) {
+      const { data, expiration } = JSON.parse(savedFormData);
+      if (expiration && new Date().getTime() > expiration) {
+        localStorage.removeItem("formData");
+      } else {
+        setFormData(data);
+      }
+    }
   }, []);
-
-
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
   };
-
 
   const renderDashboardSection = () => {
     switch (selectedTab) {
@@ -151,6 +159,18 @@ const Profile = () => {
           )}
         </div>
       </div>
+      {formData ? (
+        <div className={styles.form_data}>
+          <h2>Saved Form Data</h2>
+          <ul>
+            <li>Title: {formData.title}</li>
+            <li>Full Name: {formData.fullName}</li>
+            {/* Add more form data fields as needed */}
+          </ul>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

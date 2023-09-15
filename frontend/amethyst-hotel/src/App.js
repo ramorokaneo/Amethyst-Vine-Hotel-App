@@ -5,7 +5,7 @@ import Signup from "./components/forms/Signup/Signup";
 import Login from "./components/forms/Login/Login";
 import BookingConfirmation from "./components/Page/Confirmation/BookingConfirmation";
 import HomeScreen from "./components/Page/Home/HomeScreen";
-import Payment from "./components/Page/Payments/Payment";
+import Payment from "./components/Page/Payments/Pay/Payment";
 import RoomList from "./components/Page/Rooms/RoomList/RoomList";
 import RoomDetail from "./components/Page/Rooms/RoomDetails/RoomDetail";
 import Reservation from "./components/Page/Rooms/RoomResrvation/Reservation";
@@ -38,6 +38,7 @@ function App() {
 			<Route path="/adminmain" element={<AdminMain />} />
 			<Route path="/profile" element={<Profile />} />
 			<Route path="/contact" element={<ContactUs />} />
+			<Route path="/booking-confirmation" element={<BookingConfirmation />} />
 			
 		</Routes>
 	);

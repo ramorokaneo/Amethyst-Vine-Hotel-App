@@ -42,7 +42,7 @@
     color: inherit;
   }
 
-  /* Styles for the guest form */
+/* Style for the guest form */
 .guest_form {
 	display: flex;
 	flex-direction: column;
@@ -55,23 +55,23 @@
 	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .form_row {
+}
+
+.form_row {
 	margin-bottom: 20px;
 	width: 100%;
-  }
-  
-  .input_field {
+}
+
+.input_field {
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	font-size: 16px;
 	width: 100%;
 	outline: none; /* Remove default input focus outline */
-  }
-  
-  .textarea_field {
+}
+
+.textarea_field {
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
@@ -79,24 +79,126 @@
 	resize: vertical;
 	width: 100%;
 	outline: none; /* Remove default textarea focus outline */
-  }
-  
-  /* Styles for the special request */
-  .special_request {
+}
+
+/* Styles for the special request */
+.special_request {
 	display: none;
 	margin-top: 20px;
-  }
-  
-  .show_special_request .special_request {
+}
+
+.show_special_request .special_request {
 	display: block;
-  }
-  
-  .room_image {
-	max-width: 100%;
-	max-height: 100%; /* Add this line to limit the image height */
-	width: auto; /* Adjust this if needed */
-	height: auto; /* Adjust this if needed */
+}
+
+/* Styles for the room card */
+.room_card {
+	border: solid 1px #ccc;
+	padding: 16px;
+	margin-bottom: 16px;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+	border-radius: 5px;
+}
+
+.room_card h2 {
+	font-size: 24px;
+	margin-bottom: 16px;
+}
+
+.room_image {
+	width: 100%;
+	max-width: 600px;
+	height: auto;
 	margin-top: 10px;
-	border-radius: 10px; /* Add border-radius for rounded corners */
-  }
-  
+	border-radius: 10px;
+}
+
+.room_data {
+	margin-top: 16px;
+}
+
+.room_data p {
+	margin-bottom: 8px;
+}
+
+.amenitiesList {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.amenitiesList li {
+	margin-bottom: 8px;
+}
+
+.amenityIcon {
+	margin-right: 8px;
+	color: #ccc;
+}
+
+/* Style for guest card */
+.guest_card {
+	border: solid 1px #ccc;
+	padding: 16px;
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+	border-radius: 5px;
+	margin-bottom: 16px;
+}
+
+.guest_card p {
+	margin-bottom: 8px;
+}
+
+.card_label {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.card_value {
+	font-size: 16px;
+	margin-bottom: 8px;
+}
+
+.select_field {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	line-height: 1.5;
+	outline: none; /* Remove default select focus outline */
+	background: transparent;
+	background-image: url('https://symbols.getvecta.com/stencil_70/88_arrow-down-icon.8b9e0c9177.png');
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-size: 20px;
+	padding-right: 30px;
+	cursor: pointer;
+}
+
+.textarea_field {
+	width: 100%;
+	min-height: 100px;
+	max-height: 200px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	line-height: 1.5;
+	resize: none;
+	outline: none; /* Remove default textarea focus outline */
+}
+
+.btn_primary {
+	background-color: #3bb19b;
+	color: white;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 16px;
+	cursor: pointer;
+	margin-top: 20px;
+}

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Main.module.css";
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import SearchForm from "../../Page/Search/SearchForm";
+import BookingConfirmation from "../../Page/Confirmation/BookingConfirmation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBed,
@@ -11,16 +12,24 @@ import {
   faHiking,
   faPhoneAlt,
   faPerson,
-  faHouse, faWifi, faSnowflake, faTree, faTv, faBath, faSwimmingPool, faGlassMartiniAlt
+  faHouse,
+  faWifi,
+  faSnowflake,
+  faTree,
+  faTv,
+  faBath,
+  faSwimmingPool,
+  faGlassMartiniAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Main = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { reservationData, selectedRoom, totalAmount } = location.state || {};
-  const { id } = useParams();
 
   const [showSpecialRequest, setShowSpecialRequest] = useState(false);
   const [specialRequestNote, setSpecialRequestNote] = useState("");
+  const [guestDetails, setGuestDetails] = useState(null);
 
   const amenityIcons = {
     "Free Wi-Fi": faWifi,
@@ -39,6 +48,54 @@ const Main = () => {
 
   const handleSpecialRequestChange = (e) => {
     setShowSpecialRequest(e.target.value === "yes");
+  };
+
+  const handleSaveAndContinue = () => {
+    // Capture the guest information from the form
+    const guestInfo = {
+      title: document.getElementById("title").value,
+      fullName: document.getElementById("fullName").value,
+      email: document.getElementById("email").value,
+      phoneNumber: document.getElementById("phoneNumber").value,
+      emergencyContactName: document.getElementById("emergencyContactName").value,
+      emergencyContactPhoneNumber: document.getElementById("emergencyContactPhoneNumber").value,
+      specialRequest: document.getElementById("specialRequest").value === "yes" ? specialRequestNote : "None",
+    };
+
+    // Save the form data in localStorage or API and navigate to BookingConfirmation component
+    const formData = {
+      // Add all the form data here
+    };
+    localStorage.setItem("formData", JSON.stringify(formData));
+
+    // Pass the necessary data as state to the BookingConfirmation component
+    setGuestDetails(guestInfo);
+    navigate("/booking-confirmation", {
+      state: {
+        formData,
+        selectedRoom,
+        totalAmount,
+        guestDetails: guestInfo,
+        reservationData: {
+          checkInDate: reservationData.checkInDate, // Include the check-in date here
+          checkOutDate: reservationData.checkOutDate, // Include the check-out date here
+        },
+      },
+    });
+  };
+
+  const handleSaveAndFinishLater = () => {
+    // Save the form data with an expiration date of 3 days
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 3);
+    const formData = {
+      // Add all the form data here
+    };
+    localStorage.setItem(
+      "formData",
+      JSON.stringify({ data: formData, expiration: expirationDate.getTime() })
+    );
+    navigate("/profile");
   };
 
   return (
@@ -111,6 +168,8 @@ const Main = () => {
                     <p>Room Description: {selectedRoom.description}</p>
                     {selectedRoom.amenities && selectedRoom.amenities.length > 0 && (
                       <div>
+                        <p>Check-In Date: {reservationData?.checkInDate || "Not specified"}</p>
+                        <p>Check-Out Date: {reservationData?.checkOutDate || "Not specified"}</p>
                         <p>Amenities:</p>
                         <ul className={styles.amenitiesList}>
                           {selectedRoom.amenities.map((amenity, index) => (
@@ -162,25 +221,37 @@ const Main = () => {
                 <input type="tel" id="emergencyContactPhoneNumber" name="emergencyContactPhoneNumber" required />
               </div>
               <div className={styles.form_row}>
-                <label htmlFor="specialRequest">Special Request:</label>
-                <select id="specialRequest" name="specialRequest" onChange={handleSpecialRequestChange}>
-                  <option value="no">No</option>
-                  <option value="yes">Yes</option>
-                </select>
-              </div>
-              {showSpecialRequest && (
-                <div className={styles.special_request}>
-                  <h3>Special Request Note</h3>
-                  <textarea
-                    id="specialRequestNote"
-                    name="specialRequestNote"
-                    rows="4"
-                    cols="50"
-                    value={specialRequestNote}
-                    onChange={(e) => setSpecialRequestNote(e.target.value)}
-                  />
-                </div>
-              )}
+  <label htmlFor="specialRequest">Special Request:</label>
+  <select id="specialRequest" name="specialRequest" onChange={handleSpecialRequestChange}>
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+  </select>
+</div>
+{showSpecialRequest && (
+  <div className={styles.special_request}>
+    <h3>Special Request Note</h3>
+    <textarea
+      id="specialRequestNote"
+      name="specialRequestNote"
+      rows="4"
+      cols="50"
+      value={specialRequestNote}
+      onChange={(e) => setSpecialRequestNote(e.target.value)}
+    />
+  </div>
+)}
+
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div className={styles.form_row}>
+              <button className={styles.blue_btn} type="button" onClick={handleSaveAndContinue}>
+                Save &amp; Continue
+              </button>
+              <button className={styles.white_btn} type="button" onClick={handleSaveAndFinishLater}>
+                Save &amp; Finish Later
+              </button>
             </div>
           </form>
         </div>

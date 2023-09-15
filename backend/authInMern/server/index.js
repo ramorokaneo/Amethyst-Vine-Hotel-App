@@ -8,6 +8,7 @@ const authRoutes = require("./routes/client/auth");
 const adminRoutes = require("./routes/admin/admins");
 const adminauthRoutes = require("./routes/admin/adminauth");
 const roomsRoutes = require("./routes/rooms");
+const bookingRoutes = require("./routes/bookings"); 
 
 // database connection
 connection();
@@ -22,6 +23,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/admins", adminRoutes );
 app.use("/api/adminauth", adminauthRoutes);
 app.use("/api/rooms", roomsRoutes);
+app.use("/api/bookings", bookingRoutes);
 
 
 
