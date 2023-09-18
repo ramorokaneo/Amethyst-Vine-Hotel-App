@@ -27,6 +27,7 @@ const BookingConfirmation = () => {
   
     // Store the information in state
     setSavedInformation(state);
+
   
     try {
       // Send the data to the server using Axios

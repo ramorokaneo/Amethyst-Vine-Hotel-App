@@ -26,6 +26,17 @@ const Payment = () => {
   // Calculate the total amount including VAT
   const totalAmountWithVAT = totalAmountWithoutVAT + vatAmount;
 
+
+  const handlePayment = () => {
+    if (state) {
+      const stateJson = JSON.stringify(state);
+      navigate(`/paystack-pay?state=${encodeURIComponent(stateJson)}&roomImage=${selectedRoom.image}&roomName=${selectedRoom.name}&checkInDate=${state.reservationData.checkInDate}&checkOutDate=${state.reservationData.checkOutDate}&totalAmount=${totalAmountWithVAT.toFixed(2)}`);
+    } else {
+      console.error("State is null or undefined");
+    }
+  };
+
+
   return (
     <div className={styles.main_container}>
       <nav className={styles.navbar}>
@@ -35,31 +46,45 @@ const Payment = () => {
         </button>
       </nav>
       <div className={`${styles.card} ${styles.container}`}>
-        <h1>Payment Details</h1>
-        <p>Here are your booking details:</p>
-        <ul>
-     
-          <li>Room: {selectedRoom.name || "Not specified"}</li>
-          <li>Check-In Date: {state?.reservationData?.checkInDate || "Not specified"}</li>
-          <li>Check-Out Date: {state?.reservationData?.checkOutDate || "Not specified"}</li>
-          
-          <img
+        <h1 className={styles.payment_heading}>Payment Details</h1>
+        <p className={styles.details_text}>Here are your booking details:</p>
+        <ul className={styles.details_list}>
+          <li className={styles.details_item}>
+            <span className={styles.item_label}>Room:</span> {selectedRoom.name || "Not specified"}
+          </li>
+          <li className={styles.details_item}>
+            <span className={styles.item_label}>Check-In Date:</span> {state?.reservationData?.checkInDate || "Not specified"}
+          </li>
+          <li className={styles.details_item}>
+            <span className={styles.item_label}>Check-Out Date:</span> {state?.reservationData?.checkOutDate || "Not specified"}
+          </li>
+        </ul>
+
+        <img
           src={selectedRoom.image}
           alt={selectedRoom.name}
           className={styles.room_image}
         />
-          <li>Total Amount (excl. VAT): ZAR {totalAmountWithoutVAT}</li>
-          <li>VAT (15%): ZAR {vatAmount.toFixed(2)}</li>
-          <li>Total Amount (incl. VAT): ZAR {totalAmountWithVAT.toFixed(2)}</li>
-         
-      
+
+        <ul className={styles.details_list}>
+          <li className={styles.details_item}>
+            <span className={styles.item_label}>Total Amount (excl. VAT):</span> ZAR {totalAmountWithoutVAT}
+          </li>
+          <li className={styles.details_item}>
+            <span className={styles.item_label}>VAT (15%):</span> ZAR {vatAmount.toFixed(2)}
+          </li>
+          <li className={styles.details_item}>
+            <span className={styles.item_label}>Total Amount (incl. VAT):</span> ZAR {totalAmountWithVAT.toFixed(2)}
+          </li>
         </ul>
-       
 
         <div className={styles.cancellation_policy}>
-          <h2>Cancellation Policy</h2>
-          <p>All bookings are subject to our cancellation policy. You must cancel your booking at least 48 hours before the check-in date to receive a full refund. If you cancel within 48 hours of the check-in date, you will be charged 50% of the total amount.</p>
+          <h2 className={styles.policy_heading}>Cancellation Policy</h2>
+          <p className={styles.policy_text}>All bookings are subject to our cancellation policy. You must cancel your booking at least 48 hours before the check-in date to receive a full refund. If you cancel within 48 hours of the check-in date, you will be charged 50% of the total amount.</p>
         </div>
+        <button className={styles.pay_button} onClick={handlePayment}>
+          Pay
+        </button>
       </div>
     </div>
   );

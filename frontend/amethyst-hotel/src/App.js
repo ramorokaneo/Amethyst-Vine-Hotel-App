@@ -14,6 +14,7 @@ import AdminSignup from "./components/Admin/Forms/AdminSignup/AdminSignup";
 import AdminMain from "./components/Admin/Forms/AdminMain/AdminMain";
 import Profile from "./components/Page/UserProfile/Profile";
 import ContactUs from "./components/Page/Contact/ContactUs";
+import PaystackPay from "./components/Page/Payments/PaystackPay";
 
 
 
@@ -39,7 +40,7 @@ function App() {
 			<Route path="/profile" element={<Profile />} />
 			<Route path="/contact" element={<ContactUs />} />
 			<Route path="/booking-confirmation" element={<BookingConfirmation />} />
-			
+			<Route path="/pay" element={<PaystackPay />} />
 		</Routes>
 	);
 }

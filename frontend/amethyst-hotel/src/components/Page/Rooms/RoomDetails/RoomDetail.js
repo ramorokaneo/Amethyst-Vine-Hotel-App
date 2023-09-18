@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUtensils, faSpa, faHiking } from '@fortawesome/free-solid-svg-icons';
 
 import Bedroom1Image from '../RoomImages/Bedroom1.jpg';
-import Bedroom2Image from '../RoomImages/Bedroom2.jpg';
+import Bedroom2Image from '../RoomImages/bedroom7.jpg';
 import Bedroom3Image from '../RoomImages/Bedroom3.jpg';
 import Bedroom4Image from '../RoomImages/bedroom4.jpg';
 import Bedroom5Image from '../RoomImages/bedroom5.jpg';
