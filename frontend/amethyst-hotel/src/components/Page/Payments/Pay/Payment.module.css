@@ -42,3 +42,10 @@
     text-decoration: none;
     color: inherit;
   }
+
+  .room_image {
+	max-width: 100%;
+	height: auto;
+	margin-top: 10px;
+  }
+  

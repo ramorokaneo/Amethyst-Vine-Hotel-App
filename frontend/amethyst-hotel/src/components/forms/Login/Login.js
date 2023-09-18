@@ -1,11 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 
 const Login = () => {
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
+	const navigate = useNavigate();
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
@@ -17,7 +18,25 @@ const Login = () => {
 			const url = "http://localhost:5000/api/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
-			window.location = "/payment-gateway";
+			 // After successful login, retrieve savedInformation
+			 const state = JSON.parse(localStorage.getItem('state'));
+
+			 if (state) {
+			   // Debugging logs
+			   console.log("Redirecting to /payment-gateway");
+			   
+			   // Redirect to the Payment component and pass savedInformation as state
+			   navigate('/payment-gateway', { state: state });
+		 
+			   // Debugging logs
+			   console.log("Changing browser location to /payment-gateway");
+			   
+			   // Directly change the browser's location
+			   window.location = "/payment-gateway";
+			 } else {
+			   // Handle the case where savedInformation is not available
+			   // You can show an error message or take appropriate action
+			 }
 		} catch (error) {
 			if (
 				error.response &&
