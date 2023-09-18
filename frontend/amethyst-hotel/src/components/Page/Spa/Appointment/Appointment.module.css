@@ -1,0 +1,119 @@
+/* Appointment.module.css */
+
+/* Main container styles */
+.mainContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+.navbar h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.whiteBtn {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.whiteBtn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Content styles */
+.content {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.content h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Cart styles */
+.cartList {
+  list-style: none;
+  padding: 0;
+}
+
+.cartItem {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Form container styles */
+.formContainer {
+  margin-top: 20px;
+}
+
+/* Form group styles */
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="email"],
+.formGroup input[type="tel"],
+.formGroup input[type="date"],
+.formGroup input[type="time"],
+.formGroup input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.formGroup input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Submit button styles */
+.submitBtn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.submitBtn:hover {
+  background-color: #555;
+}

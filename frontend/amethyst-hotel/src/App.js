@@ -5,7 +5,7 @@ import Signup from "./components/forms/Signup/Signup";
 import Login from "./components/forms/Login/Login";
 import BookingConfirmation from "./components/Page/Confirmation/BookingConfirmation";
 import HomeScreen from "./components/Page/Home/HomeScreen";
-import Payment from "./components/Page/Payments/Pay/Payment";
+import Finish from "./components/Page/Payments/Pay/Finish";
 import RoomList from "./components/Page/Rooms/RoomList/RoomList";
 import RoomDetail from "./components/Page/Rooms/RoomDetails/RoomDetail";
 import Reservation from "./components/Page/Rooms/RoomResrvation/Reservation";
@@ -14,7 +14,11 @@ import AdminSignup from "./components/Admin/Forms/AdminSignup/AdminSignup";
 import AdminMain from "./components/Admin/Forms/AdminMain/AdminMain";
 import Profile from "./components/Page/UserProfile/Profile";
 import ContactUs from "./components/Page/Contact/ContactUs";
-import PaystackPay from "./components/Page/Payments/PaystackPay";
+import Pay from "./components/Page/Payments/Pay";
+import Spa from "./components/Page/Spa/Spapackage/SpaPackages";
+import Appointment from "./components/Page/Spa/Appointment/Appointment";
+
+
 
 
 
@@ -29,7 +33,7 @@ function App() {
 			<Route path="/" element={<Navigate replace to="/login" />} />
 			<Route path="/main" exact element={<Main />} />
 			<Route path="/booking-confirmation/:title/:surname/:name/:phoneNumber/:email" element={<BookingConfirmation />} />
-			<Route path="/payment-gateway" exact element={<Payment />} />
+			<Route path="/finish" exact element={<Finish />} />
 			<Route path="/home" exact element={<HomeScreen />} />
 			<Route path="/rooms" exact element={<RoomList />} />
 			<Route path="/rooms/:id" element={<RoomDetail />} />
@@ -40,7 +44,10 @@ function App() {
 			<Route path="/profile" element={<Profile />} />
 			<Route path="/contact" element={<ContactUs />} />
 			<Route path="/booking-confirmation" element={<BookingConfirmation />} />
-			<Route path="/pay" element={<PaystackPay />} />
+			<Route path="/pay" element={<Pay />} />
+			<Route path="/spa" element={<Spa />} />
+			<Route path="/appointment" element={<Appointment />} />
+			
 		</Routes>
 	);
 }

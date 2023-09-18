@@ -23,16 +23,16 @@ const Login = () => {
 
 			 if (state) {
 			   // Debugging logs
-			   console.log("Redirecting to /payment-gateway");
+			   console.log("Redirecting to /finish");
 			   
 			   // Redirect to the Payment component and pass savedInformation as state
-			   navigate('/payment-gateway', { state: state });
+			   navigate('/finish', { state: state });
 		 
 			   // Debugging logs
 			   console.log("Changing browser location to /payment-gateway");
 			   
 			   // Directly change the browser's location
-			   window.location = "/payment-gateway";
+			   window.location = "/finish";
 			 } else {
 			   // Handle the case where savedInformation is not available
 			   // You can show an error message or take appropriate action

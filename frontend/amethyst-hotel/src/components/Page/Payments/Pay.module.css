@@ -1,0 +1,89 @@
+.mainContainer {
+    background-color: #3bb19b;
+    padding: 20px;
+    display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  min-height: 100vh; 
+  }
+
+.navbar {
+	width: 100%;
+	height: 100px;
+	background-color: #3bb19b;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+    padding: 0 25px;
+}
+
+.navbar h1 {
+	color: white;
+	font-size: 25px;
+	margin-left: 15px;
+}
+
+.white_btn {
+	border: none;
+	outline: none;
+	padding: 10px 0;
+	background-color: white;
+	border-radius: 20px;
+	width: 120px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	margin-right: 20px;
+}
+
+ /* Room image */
+ .room_image {
+	max-width: 100%;
+	border-radius: 10px;
+	margin-top: 20px;
+  }
+
+  /* App container */
+.appContainer {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     max-width: 400px;
+  }
+  
+  /* App bar */
+  .appBarTitle {
+    margin: 0;
+  }
+  
+  /* Form inputs */
+  .input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Pay button */
+  .payButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .payButton:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Paystack container */
+  .paystackContainer {
+    margin-top: 20px;
+  }
