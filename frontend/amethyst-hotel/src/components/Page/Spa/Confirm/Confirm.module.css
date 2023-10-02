@@ -1,0 +1,117 @@
+.navbar {
+	width: 100%;
+	height: 100px;
+	background-color: #3bb19b;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+    padding: 0 25px;
+}
+
+.navbar h1 {
+	color: white;
+	font-size: 25px;
+	margin-left: 15px;
+}
+
+.white_btn {
+	border: none;
+	outline: none;
+	padding: 10px 0;
+	background-color: white;
+	border-radius: 20px;
+	width: 120px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	margin-right: 20px;
+}
+
+.confirmation-container {
+	margin: 20px auto;
+	max-width: 600px;
+	padding: 20px;
+	background-color: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 16px;
+	margin: 16px;
+	max-width: 400px;
+  }
+  
+  .confirmation-header {
+	font-size: 24px;
+	margin-bottom: 16px;
+  }
+  
+  .confirmation-info {
+	font-size: 16px;
+	margin-bottom: 10px;
+  }
+  
+  .confirmation-list {
+	list-style-type: none;
+	padding: 0;
+  }
+  
+  .confirmation-list-item {
+	margin-bottom: 5px;
+  }
+  
+  .confirmation-contact {
+	font-size: 16px;
+	margin-top: 20px;
+	font-style: italic;
+  }
+  .card-style {
+	transition: transform 0.2s; 
+	cursor: pointer;
+  }
+  
+  .card-style:hover {
+	transform: translateY(-5px); 
+  }
+
+  .confirmationText {
+	margin-bottom: 8px;
+  }
+
+  .checkboxContainer {
+	display: flex;
+	align-items: center;
+	margin-top: 16px;
+  }
+
+  
+.checkboxLabel {
+	margin-left: 8px;
+	font-size: 16px;
+  }
+
+  .submitBtn {
+	display: block;
+	background-color: #007bff; 
+	color: #ffffff;
+	border: none;
+	border-radius: 4px;
+	padding: 12px 24px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  
+	&:hover {
+	  background-color: #0056b3; 
+	}
+
+	&:disabled {
+		background-color: #ccc;
+		cursor: not-allowed;
+	  }
+	}
+  
+  
+  
+  

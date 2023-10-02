@@ -1,25 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Appointment.module.css";
 
 const Appointment = () => {
   const navigate = useNavigate();
 
-
   const handleLogout = () => {
-      localStorage.removeItem('token');
-      navigate('/');
-    };
+    localStorage.removeItem('token');
+    navigate('/');
+  };
+
   const location = useLocation();
-  const { cart } = location.state || {};
+  const { cart } = location.state || { cart: [] }; // Provide a default empty array for cart
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phoneNumber: "",
     date: "",
     time: "",
-    guests: 1, // Default to 1 guest
-    includeMeal: false, // Default to not including a meal
+    guests: 1,
+    includeMeal: false,
   });
 
   const handleChange = (e) => {
@@ -30,55 +31,56 @@ const Appointment = () => {
     });
   };
 
-  const [total, setTotal] = useState(0); // Initialize total with 0
+  const [total, setTotal] = useState(0);
 
-  // ...
-  
+  // Use useEffect to calculate the total whenever cart or formData changes
+  useEffect(() => {
+    // Calculate the total cost of items in the cart including VAT
+    let cartTotal = 0;
+    let cartItemPrices = [];
+
+    if (cart.length > 0) {
+      cartTotal = cart.reduce((accumulator, cartItem) => {
+        // Add the item price with 15% VAT to the accumulator
+        const itemPrice = cartItem.price * 1.15;
+        cartItemPrices.push(itemPrice); // Store the price
+        return accumulator + itemPrice; // Adding 15% VAT
+      }, 0);
+    }
+
+    // Multiply the cart total by the number of guests
+    const totalWithoutMeal = cartTotal * formData.guests;
+
+    // Calculate the final total by adding the small meal cost (200 ZAR)
+    const finalTotal = totalWithoutMeal + 200.0; // Adding 200 ZAR for the small meal
+
+    // Set the 'total' state with the finalTotal value
+    setTotal(finalTotal);
+
+    // Save form data, total, and cart item prices in localStorage
+    localStorage.setItem('formData', JSON.stringify(formData));
+    localStorage.setItem('total', finalTotal.toString());
+    localStorage.setItem('cartItemPrices', JSON.stringify(cartItemPrices));
+
+    // You can now use the 'finalTotal' variable as needed
+    console.log("Final Total (including VAT and small meal):", finalTotal);
+  }, [cart, formData]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    // Calculate the total based on the selected options
-    let newTotal = 0; // Use a different variable name to avoid conflicts
-    if (formData.includeMeal) {
-      newTotal += 200.0; // Add R200.00 for the small meal
-    }
-  
-    // Add the prices of items in the cart to the total
-    if (cart && cart.length > 0) {
-      newTotal += cart.reduce((accumulator, cartItem) => {
-        return accumulator + cartItem.price;
-      }, 0);
-    }
-  
-    // Calculate VAT (15% of the total)
-    const vatAmount = newTotal * 0.15;
-  
-    // Add VAT to the total
-    newTotal += vatAmount;
-  
-    // Multiply the total by the number of guests
-    newTotal *= formData.guests;
-  
-    // Set the 'total' state with the newTotal value
-    setTotal(newTotal);
-  
-    // You can now use the 'total' variable as needed, e.g., send it to the server or display it
-    console.log("Total (including VAT):", newTotal);
-  
-    // Navigate to another page with the form data and total
-    navigate("/confirmation", { state: { formData, total: newTotal } });
+    // Navigate to the Confirmation component
+    navigate("/confirmation");
   };
-  
-
 
   return (
     <div className={styles.mainContainer}>
-    <nav className={styles.navbar}>
-      <h1>Amethyst Vine Hotel</h1>
-      <button className={styles.whiteBtn} onClick={handleLogout}>
-        Logout
-      </button>
-    </nav>
+      <nav className={styles.navbar}>
+        <h1>Amethyst Vine Hotel</h1>
+        <button className={styles.whiteBtn} onClick={handleLogout}>
+          Logout
+        </button>
+      </nav>
       <div className={styles.content}>
         <h2>Appointment Page</h2>
         {cart && cart.length > 0 ? (
@@ -171,10 +173,10 @@ const Appointment = () => {
               <button type="submit" className={styles.submitBtn}>Submit</button>
             </div>
             {formData.includeMeal && (
-  <div className={styles.formGroup}>
-    <p>Total Amount: ZAR {(total).toFixed(2)}</p>
-  </div>
-)}
+              <div className={styles.formGroup}>
+                <p>Total Amount: ZAR {(total).toFixed(2)}</p>
+              </div>
+            )}
           </form>
         </div>
       </div>
