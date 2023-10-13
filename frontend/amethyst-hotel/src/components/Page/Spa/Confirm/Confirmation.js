@@ -42,7 +42,7 @@ const Confirmation = () => {
 localStorage.setItem('confirmationData', JSON.stringify(formData));
 
       // Navigate to the policy agreement page
-      navigate("/policy-agreement");
+      navigate("/payment");
     }
   };
 
@@ -95,7 +95,7 @@ localStorage.setItem('confirmationData', JSON.stringify(formData));
       <br/>
       <Link
   to={{
-    pathname: "/policy-agreement",
+    pathname: "/payment",
     state: {
       formData,
       total,

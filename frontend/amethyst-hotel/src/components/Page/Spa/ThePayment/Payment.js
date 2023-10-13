@@ -6,19 +6,18 @@ const Payment = () => {
   const location = useLocation();
   const { state } = location;
 
-  // Check if state contains the data
-  if (!state || !state.formData || state.total === undefined || !Array.isArray(state.cartItemPrices)) {
-    
-    
+  // Check if state contains the data and if cartItemPrices is available
+  if (!state || !state.confirmationData || !state.confirmationData.cartItemPrices) {
     return (
       <div className={styles.mainContainer}>
         <h2>Error: Data not found.</h2>
-        {/* You can add a message or redirect to an error page */}
       </div>
     );
   }
 
-  const { formData, total, cartItemPrices } = state;
+  const { confirmationData } = state;
+
+  
 
   return (
     <div className={styles.mainContainer}>
@@ -26,18 +25,23 @@ const Payment = () => {
       <h2>Payment Page</h2>
       <div className={styles.paymentDetails}>
         <h3>Confirmation Details:</h3>
-        <p>Name: {formData.name}</p>
-        <p>Email: {formData.email}</p>
-        <p>Phone Number: {formData.phoneNumber}</p>
-        {/* Display other confirmation details as needed */}
-        <h3>Payment Information:</h3>
-        <p>Total Amount: ZAR {total.toFixed(2)}</p>
+        <p>Name: {confirmationData.name}</p>
+        <p>Email: {confirmationData.email}</p>
+        <p>Phone Number: {confirmationData.phoneNumber}</p>
+        <p>Date: {confirmationData.date}</p>
+        <p>Time: {confirmationData.time}</p>
+        <p>Number of Guests: {confirmationData.guests}</p>
         <h3>Cart Items:</h3>
         <ul>
-          {cartItemPrices.map((itemPrice, index) => (
+          {confirmationData.cartItemPrices.map((itemPrice, index) => (
             <li key={index}>Item {index + 1} Price: ZAR {itemPrice.toFixed(2)}</li>
           ))}
         </ul>
+        {confirmationData.includeMeal && (
+          <p className={styles.confirmationInfo}>
+            Total Amount (including VAT and small meal): ZAR {confirmationData.total.toFixed(2)}
+          </p>
+        )}
         {/* You can display additional payment-related information here */}
       </div>
       {/* Add your payment form or payment processing logic here */}
@@ -46,3 +50,4 @@ const Payment = () => {
 };
 
 export default Payment;
+

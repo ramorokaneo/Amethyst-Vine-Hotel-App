@@ -18,7 +18,6 @@ import Pay from "./components/Page/Payments/Pay";
 import Spa from "./components/Page/Spa/Spapackage/SpaPackages";
 import Appointment from "./components/Page/Spa/Appointment/Appointment";
 import Confirmation from "./components/Page/Spa/Confirm/Confirmation";
-import PolicyAgreement from "./components/Page/Spa/Policy&Agreement/PolicyAgreement";
 import Payment from "./components/Page/Spa/ThePayment/Payment";
 
 
@@ -51,8 +50,7 @@ function App() {
 			<Route path="/spa" element={<Spa />} />
 			<Route path="/appointment" element={<Appointment />} />
 			<Route path="/confirmation" element={<Confirmation />} />
-			<Route path="/policy-agreement" element={<PolicyAgreement />} />
-			<Route path="/payment" element={<Payment />} />
+						<Route path="/payment" element={<Payment />} />
 			
 		</Routes>
 	);
