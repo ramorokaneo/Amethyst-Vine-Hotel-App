@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./AdminMain.module.css";
+import { roomData } from "../AdminMain/roomData";
 
 const AdminMain = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -9,11 +10,7 @@ const AdminMain = () => {
     window.location.reload();
   };
 
-  const [rooms, setRooms] = useState([
-    { id: "1", name: "Room 101", price: "100" },
-    { id: "2", name: "Room 102", price: "150" },
-    { id: "3", name: "Room 103", price: "200" },
-  ]);
+  const [rooms, setRooms] = useState(roomData);
 
   const [selectedRoom, setSelectedRoom] = useState(null);
 
@@ -53,18 +50,6 @@ const AdminMain = () => {
               >
                 Rooms
               </a>
-            </li>
-            <li>
-              <a href="#">Reservations</a>
-            </li>
-            <li>
-              <a href="#">Appointments</a>
-            </li>
-            <li>
-              <a href="#">Users</a>
-            </li>
-            <li>
-              <a href="#">Payments</a>
             </li>
           </ul>
         </div>
@@ -121,13 +106,14 @@ const AdminMain = () => {
   );
 };
 
-const RoomForm = ({ room = { name: "", price: "" }, onSubmit, onClose }) => {
+const RoomForm = ({ room = { id: "", name: "", price: "" }, onSubmit, onClose }) => {
+  const [id, setId] = useState(room.id);
   const [name, setName] = useState(room.name);
   const [price, setPrice] = useState(room.price);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ ...room, name, price });
+    onSubmit({ id, name, price });
     onClose();
   };
 
@@ -135,6 +121,15 @@ const RoomForm = ({ room = { name: "", price: "" }, onSubmit, onClose }) => {
     <div>
       <h3>{room.id ? "Edit Room" : "Add Room"}</h3>
       <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="id">ID:</label>
+          <input
+            type="text"
+            id="id"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+          />
+        </div>
         <div>
           <label htmlFor="name">Name:</label>
           <input

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "./AdminLogin.module.css";
 
 const Login = () => {
-	const [data, setData] = useState({ employeeNumber: "", password: "" });
+	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
 
 	const handleChange = ({ currentTarget: input }) => {
@@ -36,11 +36,11 @@ const Login = () => {
 					<form className={styles.form_container} onSubmit={handleSubmit}>
 						<h1>Login to Your Account</h1>
 						<input
-							type="text"
-							placeholder="Employee Number"
-							name="employeeNumber"
+							type="email"
+							placeholder="Email"
+							name="email"
 							onChange={handleChange}
-							value={data.employeeNumber}
+							value={data.email}
 							required
 							className={styles.input}
 						/>

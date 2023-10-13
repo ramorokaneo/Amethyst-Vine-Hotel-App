@@ -7,7 +7,7 @@ const AdminSignup = () => {
 	const [data, setData] = useState({
 		firstName: "",
 		lastName: "",
-		employeeNumber: "",
+		email: "",
 		password: "",
 	});
 	const [error, setError] = useState("");
@@ -19,11 +19,6 @@ const AdminSignup = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// Validate the employee number
-		if (!data.employeeNumber.startsWith('AVH')) {
-			setError('Employee Number must start with AVH');
-			return;
-		}
 	
 		try {
 			const url = "http://localhost:5000/api/admins";
@@ -75,11 +70,11 @@ const AdminSignup = () => {
 							className={styles.input}
 						/>
 						<input
-							type="text"
-							placeholder="Employee Number"
-							name="employeeNumber"
+							type="email"
+							placeholder="Email"
+							name="email"
 							onChange={handleChange}
-							value={data.employeeNumber}
+							value={data.email}
 							required
 							className={styles.input}
 						/>

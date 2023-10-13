@@ -9,8 +9,8 @@ import Finish from "./components/Page/Payments/Pay/Finish";
 import RoomList from "./components/Page/Rooms/RoomList/RoomList";
 import RoomDetail from "./components/Page/Rooms/RoomDetails/RoomDetail";
 import Reservation from "./components/Page/Rooms/RoomResrvation/Reservation";
-import AdminLogin from "./components/Admin/Forms/AdminLogin/AdminLogin";
-import AdminSignup from "./components/Admin/Forms/AdminSignup/AdminSignup";
+// import AdminLogin from "./components/Admin/Forms/AdminLogin/AdminLogin";
+// import AdminSignup from "./components/Admin/Forms/AdminSignup/AdminSignup";
 import AdminMain from "./components/Admin/Forms/AdminMain/AdminMain";
 import Profile from "./components/Page/UserProfile/Profile";
 import ContactUs from "./components/Page/Contact/ContactUs";
@@ -42,9 +42,9 @@ function App() {
 			<Route path="/rooms" exact element={<RoomList />} />
 			<Route path="/rooms/:id" element={<RoomDetail />} />
 			<Route path="/reservation/:id" element={<Reservation />} />
-			<Route path="/admin" element={<AdminLogin />} />
-			<Route path="/adminsignup" element={<AdminSignup />} />
-			<Route path="/adminmain" element={<AdminMain />} />
+			<Route path="/admin" element={<AdminMain />} />
+			{/* <Route path="/adminsignup" element={<AdminSignup />} /> */}
+			{/* <Route path="/adminmain" element={<AdminMain />} /> */}
 			<Route path="/profile" element={<Profile />} />
 			<Route path="/contact" element={<ContactUs />} />
 			<Route path="/booking-confirmation" element={<BookingConfirmation />} />

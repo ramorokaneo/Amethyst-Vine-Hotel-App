@@ -12,12 +12,12 @@ router.post("/", async (req, res) => {
      return res.status(400).send({ message: error.details[0].message });
     console.log('admin.js line11 after if')
 
-    const admin = await Admin.findOne({ employeeNumber: req.body.employeeNumber });
-    console.log('admin.js line14 admin:' ,admin)
+    const admin = await Admin.findOne({ email: req.body.email });
+    console.log('admin.js line14 admin:' , admin)
     if (admin)
       return res
         .status(409)
-        .send({ message: "Admin with given employee Number already exist!" });
+        .send({ message: "Admin with given email already exist!" });
     console.log('admin.js line19 after if')
 
     const salt = await bcrypt.genSalt(Number(process.env.SALT));
@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
     console.log('admin.js line24 hashPassword:' , hashPassword)
 
     await new Admin({ ...req.body, password: hashPassword }).save();
-    console.log('admin.js line27 new Admin:')
+    console.log('admin.js line27 new admin:')
     res.status(201).send({ message: "Admin created successfully" });
   } catch (error) {
     res.status(500).send({ message: "Internal Server Error" });
