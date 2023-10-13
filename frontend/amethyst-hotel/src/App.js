@@ -19,7 +19,9 @@ import Spa from "./components/Page/Spa/Spapackage/SpaPackages";
 import Appointment from "./components/Page/Spa/Appointment/Appointment";
 import Confirmation from "./components/Page/Spa/Confirm/Confirmation";
 import Payment from "./components/Page/Spa/ThePayment/Payment";
-
+import Dining from "./components/Dine/Dining";
+import SpecialOffers from "./components/Page/SpecialOffers/SpecialOffers";
+import Activities from "./components/Activities/Activities";
 
 
 
@@ -50,8 +52,10 @@ function App() {
 			<Route path="/spa" element={<Spa />} />
 			<Route path="/appointment" element={<Appointment />} />
 			<Route path="/confirmation" element={<Confirmation />} />
-						<Route path="/payment" element={<Payment />} />
-			
+			<Route path="/payment" element={<Payment />} />
+			<Route path="/dining" element={<Dining />} />
+			<Route path="/specialoffers" element={<SpecialOffers />} />
+			<Route path="/activities" element={<Activities />} />
 		</Routes>
 	);
 }
