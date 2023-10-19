@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import styles from "./AdminMain.module.css";
-import { roomData } from "../AdminMain/roomData";
+import React, { useState, useEffect } from 'react';
+import styles from './AdminMain.module.css';
+import { roomData } from './roomData';
 
 const AdminMain = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
     window.location.reload();
   };
 
   const [rooms, setRooms] = useState(roomData);
-
   const [selectedRoom, setSelectedRoom] = useState(null);
 
   const handleAddRoom = (room) => {
@@ -23,9 +22,7 @@ const AdminMain = () => {
   };
 
   const handleUpdateRoom = (updatedRoom) => {
-    setRooms(
-      rooms.map((room) => (room.id === updatedRoom.id ? updatedRoom : room))
-    );
+    setRooms(rooms.map((room) => (room.id === updatedRoom.id ? updatedRoom : room)));
   };
 
   return (
@@ -45,7 +42,7 @@ const AdminMain = () => {
             <li>
               <a
                 href="#"
-                className={isSidebarOpen ? styles.active : ""}
+                className={isSidebarOpen ? styles.active : ''}
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               >
                 Rooms
@@ -55,7 +52,7 @@ const AdminMain = () => {
         </div>
         <div
           className={styles.page_content}
-          style={{ marginLeft: isSidebarOpen ? "240px" : "0" }}
+          style={{ marginLeft: isSidebarOpen ? '240px' : '0' }}
         >
           {isSidebarOpen && (
             <div className={styles.page}>
@@ -77,12 +74,8 @@ const AdminMain = () => {
                       <td>{room.name}</td>
                       <td>{room.price}</td>
                       <td>
-                        <button onClick={() => setSelectedRoom(room)}>
-                          Edit
-                        </button>
-                        <button onClick={() => handleDeleteRoom(room.id)}>
-                          Delete
-                        </button>
+                        <button onClick={() => setSelectedRoom(room)}>Edit</button>
+                        <button onClick={() => handleDeleteRoom(room.id)}>Delete</button>
                       </td>
                     </tr>
                   ))}
@@ -106,7 +99,7 @@ const AdminMain = () => {
   );
 };
 
-const RoomForm = ({ room = { id: "", name: "", price: "" }, onSubmit, onClose }) => {
+const RoomForm = ({ room = { id: '', name: '', price: '' }, onSubmit, onClose }) => {
   const [id, setId] = useState(room.id);
   const [name, setName] = useState(room.name);
   const [price, setPrice] = useState(room.price);
@@ -119,7 +112,7 @@ const RoomForm = ({ room = { id: "", name: "", price: "" }, onSubmit, onClose })
 
   return (
     <div>
-      <h3>{room.id ? "Edit Room" : "Add Room"}</h3>
+      <h3>{room.id ? 'Edit Room' : 'Add Room'}</h3>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="id">ID:</label>
@@ -148,11 +141,106 @@ const RoomForm = ({ room = { id: "", name: "", price: "" }, onSubmit, onClose })
             onChange={(e) => setPrice(e.target.value)}
           />
         </div>
-        <button type="submit">{room.id ? "Save" : "Add"}</button>
+        <button type="submit">{room.id ? 'Save' : 'Add'}</button>
         <button type="button" onClick={onClose}>
           Cancel
         </button>
       </form>
+    </div>
+  );
+};
+
+const AdminScreen = ({ route }) => {
+  const [rooms, setRooms] = useState([]);
+  const [roomName, setRoomName] = useState('');
+  const [bookingStats, setBookingStats] = useState({ weeklyStats: 0, monthlyStats: 0 });
+  const [reservationData, setReservationData] = useState(null); // Initialize reservationData as null
+
+  const addRoom = () => {
+    if (roomName.trim() === '') {
+      return;
+    }
+    const newRoom = {
+      id: Math.random().toString(),
+      name: roomName,
+    };
+    setRooms((prevRooms) => [...prevRooms, newRoom]);
+    setRoomName('');
+  };
+
+  const editRoom = (roomId, updatedDetails) => {
+    setRooms((prevRooms) =>
+      prevRooms.map((room) =>
+        room.id === roomId ? { ...room, ...updatedDetails } : room
+      )
+    );
+  };
+
+  const deleteRoom = (roomId) => {
+    setRooms((prevRooms) => prevRooms.filter((room) => room.id !== roomId));
+  };
+
+  const viewBookings = (roomId) => {
+    // Implement code to view bookings for the selected room
+    // For simplicity, let's just log the selected room's ID for now.
+    console.log(`View bookings for room with ID: ${roomId}`);
+  };
+
+  const generateBookingStatistics = () => {
+    // Implement your logic to calculate weeklyStats and monthlyStats here
+    // For demonstration purposes, let's set some dummy values.
+    const calculatedStats = {
+      weeklyStats: 50, // Replace with your calculation
+      monthlyStats: 200, // Replace with your calculation
+    };
+    setBookingStats(calculatedStats);
+  };
+
+  // Function to fetch reservation data from the ConfirmationScreen
+  const fetchReservationData = () => {
+    // Check if the route parameter contains reservation data
+    if (route.params && route.params.reservationData) {
+      const newReservationData = route.params.reservationData;
+      setReservationData(newReservationData);
+    }
+  };
+
+  useEffect(() => {
+    fetchReservationData();
+  }, [route.params]);
+
+  return (
+    <div className="container">
+      <h1 className="title">Room Listing Management</h1>
+      <input
+        className="input"
+        type="text"
+        placeholder="Enter room name"
+        value={roomName}
+        onChange={(e) => setRoomName(e.target.value)}
+      />
+      <button onClick={addRoom}>Add Room</button>
+      <ul>
+        {rooms.map((item) => (
+          <li key={item.id}>
+            {item.name}
+            <button onClick={() => editRoom(item.id, { name: 'Updated Name' })}>Edit</button>
+            <button onClick={() => deleteRoom(item.id)}>Delete</button>
+            <button onClick={() => viewBookings(item.id)}>View Bookings</button>
+          </li>
+        ))}
+      </ul>
+
+      {reservationData && (
+        <div>
+          <h2 className="title">Reservation Data</h2>
+          <p>Name: {reservationData.name}</p>
+          <p>Number of Guests: {reservationData.guests}</p>
+          {reservationData.date && <p>Date: {reservationData.date.toDateString()}</p>}
+          {reservationData.time && <p>Time: {reservationData.time.toLocaleTimeString()}</p>}
+          {reservationData.room && <p>Room: {reservationData.room.name}</p>}
+        </div>
+      )}
     </div>
   );
 };
