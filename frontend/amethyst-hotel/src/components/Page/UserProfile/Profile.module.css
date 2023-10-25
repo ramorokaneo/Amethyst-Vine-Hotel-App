@@ -92,3 +92,53 @@
     margin-top: 16px;
   }
   
+.bookingCard {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width:  50%;
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  width: 70%;
+}
+
+.cardLeft {
+  width: 60%;
+}
+
+.cardRight {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.cardRight img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.showHideButton {
+  background-color:  #3bb19b; /* Replace with the color you want */
+  color: #fff; /* Text color */
+  border: none;
+  border-radius: 15px; /* Adjust the border-radius as needed for curved edges */
+  padding: 10px 20px; /* Adjust padding as needed */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Add a transition for hover effect */
+
+  /* Additional styles for hover effect */
+  &:hover {
+    background-color:  #3bb19b; /* Replace with the hover color you want */
+  }
+}
+
+

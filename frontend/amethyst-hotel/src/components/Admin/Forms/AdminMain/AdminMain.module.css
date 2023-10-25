@@ -37,6 +37,11 @@
     display: flex;
     gap: 20px;
   }
+  .navigation_list {
+    list-style: none; 
+    display: flex;
+    gap: 20px;
+  }
   
   .navigation_list li {
     margin: 0;
@@ -47,7 +52,6 @@
     text-decoration: none;
     color: inherit;
   }
-
   
 .sidebar_content {
 	display: flex;
@@ -91,4 +95,21 @@
   .page_content {
 	flex: 1;
 	padding: 20px;
+  }
+
+  .bookingCard {
+	border: 3px solid #000; /* Thick black border */
+	padding: 20px;
+	margin: 10px;
+	border-radius: 10px; /* Rounded corners */
+	background-color: #fff; /* White background */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Drop shadow effect */
+	width: calc(33.33% - 20px); /* Adjust the width for three cards per row */
+  }
+  
+  /* Create a row container for the cards */
+  .row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
   }

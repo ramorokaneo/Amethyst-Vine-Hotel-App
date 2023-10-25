@@ -26,17 +26,28 @@ const Finish = () => {
   // Calculate the total amount including VAT
   const totalAmountWithVAT = totalAmountWithoutVAT + vatAmount;
 
-
   const handlePayment = () => {
     if (state) {
       const stateJson = JSON.stringify(state);
       navigate(`/pay?state=${encodeURIComponent(stateJson)}&roomImage=${selectedRoom.image}&roomName=${selectedRoom.name}&checkInDate=${state.reservationData.checkInDate}&checkOutDate=${state.reservationData.checkOutDate}&totalAmount=${totalAmountWithVAT.toFixed(2)}`);
+      
+      // Save the data to local storage before navigating
+      localStorage.setItem('paymentData', stateJson);
     } else {
       console.error("State is null or undefined");
-      
     }
   };
 
+  const handleViewProfile = () => {
+    if (state) {
+      const stateJson = JSON.stringify(state);
+
+      // Pass the data as a query parameter to the Profile component and navigate
+      navigate(`/profile?state=${encodeURIComponent(stateJson)}`);
+    } else {
+      console.error("State is null or undefined");
+    }
+  };
 
   return (
     <div className={styles.main_container}>
